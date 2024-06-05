@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import os
 import random
 import folium
-from folium.plugins import ClickForMarker
 from geopy.distance import geodesic
 import streamlit.components.v1 as components
 
@@ -14,6 +13,7 @@ load_dotenv()
 
 client_id = os.getenv('3031844aaf224c56926b3dc24b5fda23')
 client_secret = os.getenv('c6d0671d773d437ab7a6eb1232ca01fc')
+
 
 # Authenticate with Spotify API
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
@@ -31,7 +31,7 @@ def get_random_track(tracks):
 # Function to create a map with click functionality
 def create_map():
     m = folium.Map(location=[20, 0], zoom_start=2)
-    ClickForMarker().add_to(m)
+    folium.LatLngPopup().add_to(m)
     return m
 
 # Function to get the coordinates of a country
@@ -66,7 +66,8 @@ else:
 # Display map
 st.write("Click on the map to guess the country of origin")
 map_ = create_map()
-components.html(folium.Map()._repr_html_(), height=600)
+map_html = map_._repr_html_()
+components.html(map_html, height=600)
 
 # Get user's guess
 user_lat = st.number_input("Latitude", value=0.0)
