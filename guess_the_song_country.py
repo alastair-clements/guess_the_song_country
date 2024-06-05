@@ -11,8 +11,8 @@ import streamlit.components.v1 as components
 # Load environment variables
 load_dotenv()
 
-client_id = os.getenv('3031844aaf224c56926b3dc24b5fda23')
-client_secret = os.getenv('c6d0671d773d437ab7a6eb1232ca01fc')
+client_id = '3031844aaf224c56926b3dc24b5fda23'
+client_secret = 'c6d0671d773d437ab7a6eb1232ca01fc'
 
 # Authenticate with Spotify API
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
