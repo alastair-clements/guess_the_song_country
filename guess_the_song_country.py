@@ -5,9 +5,6 @@ from dotenv import load_dotenv
 import os
 import random
 
-SPOTIPY_CLIENT_ID = '3031844aaf224c56926b3dc24b5fda23'
-SPOTIPY_CLIENT_SECRET = '14054d67e4824df9b08144aea8738263'
-
 # Load environment variables
 load_dotenv()
 
